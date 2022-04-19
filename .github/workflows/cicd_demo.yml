@@ -23,8 +23,7 @@ jobs:
       
       - name: Run JUnit Tests
         run: mvn test -Dmaven.test.failure.ignore=true surefire-report:report
-    
-          
+        
   integrationTest:
     needs: build
     name: Integration Tests
@@ -32,8 +31,7 @@ jobs:
     steps:
       - name: Run Integration Tests
       - run: echo Run integration tests.
- 
-      
+    
   deploy:
     needs: integrationTest
     name: Deploy
