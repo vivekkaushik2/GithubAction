@@ -23,19 +23,20 @@ jobs:
       
       - name: Run JUnit Tests
         run: mvn test -Dmaven.test.failure.ignore=true surefire-report:report
-        
+   
   integrationTest:
     needs: build
     name: Integration Tests
     runs-on: ubuntu-latest
     steps:
       - name: Run Integration Tests
-      - run: echo Run integration tests.
+        run: echo Run integration tests.
     
   deploy:
     needs: integrationTest
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Run Deployment
-      - run: echo Run deployment.
+      - name: Run deployment scripts
+        run: echo Completed Deployment.
+        
