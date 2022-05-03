@@ -41,7 +41,7 @@ jobs:
       
   prod:
     environment: PROD
-    needs: qa
+    needs: uat
     name: Prod Deployment
     runs-on: ubuntu-latest
     steps:
