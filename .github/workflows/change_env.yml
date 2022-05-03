@@ -21,9 +21,6 @@ jobs:
       - name: Maven Build
         run: mvn clean install -DskipTests=true
       
-      - name: Run JUnit Tests
-        run: mvn test -Dmaven.test.failure.ignore=true surefire-report:report
-      
   qa:
     environment: QA
     needs: build
