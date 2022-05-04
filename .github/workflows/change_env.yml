@@ -21,27 +21,10 @@ jobs:
       - name: Maven Build
         run: mvn clean install -DskipTests=true
       
-  qa:
-    environment: QA
-    needs: build
-    name: QA Deployment
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deployment 
-        run: echo Run QA Deployment.
-      
-  uat:
-    environment: UAT
-    needs: qa
-    name: UAT Deployment
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deployment 
-        run: echo Run UAT Deployment.
-      
+    
   prod:
     environment: PROD
-    needs: uat
+    needs: build
     name: Prod Deployment
     runs-on: ubuntu-latest
     steps:
