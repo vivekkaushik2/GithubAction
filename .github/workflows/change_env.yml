@@ -21,7 +21,6 @@ jobs:
       - name: Maven Build
         run: mvn clean install -DskipTests=true
       
-    
   deploy:
     environment: PROD
     needs: build
