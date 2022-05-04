@@ -22,12 +22,11 @@ jobs:
         run: mvn clean install -DskipTests=true
       
     
-  prod:
+  deploy:
     environment: PROD
     needs: build
-    name: Prod Deployment
+    name: Deployment
     runs-on: ubuntu-latest
     steps:
       - name: Deployment 
-        run: echo Run PROD deployment.    
-      
+        run: echo Run PROD deployment.
