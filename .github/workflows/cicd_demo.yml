@@ -38,7 +38,7 @@ jobs:
             SONAR_URL: ${{ secrets.SONAR_URL }}
             SONAR_ORG_KEY: ${{ secrets.SONAR_ORG_KEY }}
             
-      - name: Sonar Custom Action
+      - name: ServiceNow DevOps Sonar Scan Results
         uses: velivalab/servicenow-devops-sonar@master
         with:
           devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
@@ -53,6 +53,17 @@ jobs:
       
       - name: Run JUnit Tests
         run: mvn test -Dmaven.test.failure.ignore=true surefire-report:report
+        
+      - name: ServiceNow DevOps Unit Test Results
+        uses: velivalab/servicenow-devops-test-report@master
+        with:
+          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
+          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+          instance-url: ${{ secrets.SN_INSTANCE_URL }}
+          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+          context-github: ${{ toJSON(github) }}
+          job-name: 'Build'
+          xml-report-filename: target/surefire-reports/testng-results.xml
           
   integrationTest:
     needs: build
