@@ -34,7 +34,6 @@ jobs:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
             SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
             SONAR_URL: ${{ secrets.SONAR_URL }}
-            SONAR_ORG_KEY: ${{ secrets.SONAR_ORG_KEY }}
             
       - name: ServiceNow DevOps Sonar Scan Results
         uses: ServiceNow/servicenow-devops-sonar@main
